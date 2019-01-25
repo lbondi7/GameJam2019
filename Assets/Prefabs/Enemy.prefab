@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4200755917726752}
   - component: {fileID: 212210931962969254}
+  - component: {fileID: 114508632821631578}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -40,6 +41,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114508632821631578
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1056778368714876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0914565ca0f199e449f716daabe1f4f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212210931962969254
 SpriteRenderer:
   m_ObjectHideFlags: 1
