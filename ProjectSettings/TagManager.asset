@@ -9,6 +9,7 @@ TagManager:
   - Slip
   - Grid
   - WayPoint
+  - GaurdDog
   layers:
   - Default
   - TransparentFX
