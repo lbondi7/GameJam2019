@@ -4,14 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - EnemyManager
-  - Enemy
-  - SpawnPoint
-  - Waypoint
-  - Waypoint1
   - Waypoint2
-  - Waypoint3
+  - EnemyManager
+  - Waypoint1
   - Waypoint0
+  - SpawnPoint
+  - Waypoint3
+  - Enemy
+  - Spikes
+  - Sticky
+  - GaurdDog
+  - HealthText
   layers:
   - Default
   - TransparentFX
