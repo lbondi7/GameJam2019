@@ -40,34 +40,34 @@ public class SpawnEnemy : MonoBehaviour {
         enemyTimer2 += Time.deltaTime;
         enemyTimer3 += Time.deltaTime;
 
-        if (enemy_count < 50)
+        if (enemy_count < 1000000)
         {
             if (enemyTimer0 > 1.0f)
             {
                 enemyTimer0 = 0.0f;
                 Instantiate(enemy0, spawnPoints[0].transform.position, Quaternion.identity);
-                enemyMove0.route = Random.Range(0, 4);
+                enemyMove0.route = 0;
                 enemy_count++;
             }
             if (enemyTimer1 > 2.0f)
             {
                 enemyTimer1 = 0.0f;
                 Instantiate(enemy1, spawnPoints[1].transform.position, Quaternion.identity);
-                enemyMove1.route = Random.Range(0, 4);
+                enemyMove1.route = 1;
                 enemy_count++;
             }
             if (enemyTimer2 > 3.0f)
             {
                 enemyTimer2 = 0.0f;
                 Instantiate(enemy2, spawnPoints[2].transform.position, Quaternion.identity);
-                enemyMove2.route = Random.Range(0, 4);
+                enemyMove2.route = 2;
                 enemy_count++;
             }
             if (enemyTimer3 > 5.0f)
             {
                 enemyTimer3 = 0.0f;
                 Instantiate(enemy3, spawnPoints[3].transform.position, Quaternion.identity);
-                enemyMove3.route = Random.Range(0, 4);
+                enemyMove3.route = 3;
                 enemy_count++;
             }
         }
