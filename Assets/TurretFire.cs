@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class TurretFire : MonoBehaviour {
 
-    public GameObject bulletToRight, bulletToLeft;
+    public GameObject projectile;
     Vector2 bulletPos;
+
+    public int fire_rate;
+
     float timer;
     int seconds;
+
 
 	// Use this for initialization
 	void Start () {
@@ -19,22 +23,15 @@ public class TurretFire : MonoBehaviour {
 
         timer += Time.deltaTime;
         seconds = (int)timer;
-        Debug.Log(seconds);
 
-        if (seconds == 3/*SECONDS*/)
+        if (seconds == fire_rate/*SECONDS*/)
         {
-            Fire();
-
             Debug.Log("FIRE");
             bulletPos = transform.position;
-            Instantiate(bulletToRight, bulletPos, Quaternion.identity);
+            Instantiate(projectile, bulletPos, Quaternion.identity);
             timer = 0;
         }
 
 	}
 
-    void Fire()
-    {
-
-    }
 }

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour {
 
-    public float bullet_x_velocity = 5f;
-    float bullet_y_velocity = 0f;
+    public float bullet_x_velocity;
+    public float bullet_y_velocity;
+    public float lifetime;
 
     Rigidbody2D rb;
 
@@ -17,6 +18,12 @@ public class BulletScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         rb.velocity = new Vector2(bullet_x_velocity, bullet_y_velocity);
-        Destroy(gameObject, 3f);
+        Destroy(gameObject, lifetime);
 	}
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("HIT");
+        Destroy(gameObject, 0f);
+    }
 }
