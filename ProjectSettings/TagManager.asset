@@ -12,6 +12,7 @@ TagManager:
   - Waypoint2
   - Waypoint3
   - Waypoint0
+  - Pickup
   layers:
   - Default
   - TransparentFX
