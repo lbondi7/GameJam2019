@@ -1,0 +1,51 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour {
+
+    // Use this for initialization
+    public float walkSpeed = 0;
+    private Animator anim;
+    private HashIDs hash;
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+        hash = GameObject.FindGameObjectWithTag("GameController").GetComponent<HashIDs>();
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
+        //float x = 0;
+        //if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.JoystickButton7))
+        //{
+        //    x = -1;
+        //}
+        //else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.JoystickButton8))
+        //{
+        //    x = 1;
+        //}
+        //else
+        //{
+        //    x = 0;
+        //}
+
+        float speed = Input.GetAxis("Horizontal") * walkSpeed;
+        anim.SetFloat(hash.speed, Input.GetAxis("Horizontal") != 0 ? 1 : 0);
+        Debug.Log(Input.GetAxis("Horizontal") != 0 ? 1 : 0);
+
+        transform.Translate(new Vector2(speed, 0));
+
+        if (speed > 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = false;
+        }
+        else if(speed < 0)
+        {
+            GetComponent<SpriteRenderer>().flipX = true;
+        }
+
+    }
+}
