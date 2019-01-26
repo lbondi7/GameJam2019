@@ -5,8 +5,8 @@ using UnityEngine;
 public class GaurdDog : MonoBehaviour {
 
 
-    public float damage = 5;
-    public float health = 15;
+    public int damage = 5;
+    public int health = 15;
     public int cost = 500;
 
     // Use this for initialization

@@ -11,7 +11,9 @@ public class MoveToWayPoint : MonoBehaviour {
 
     private Spikes spikes_script;
     private Sticky sticky_script;
-    private Slip slip_script;
+    private GaurdDog gaurddog_script;
+
+
 
     public 
 
@@ -20,7 +22,7 @@ public class MoveToWayPoint : MonoBehaviour {
     {
         spikes_script = GetComponent<Spikes>();
         sticky_script = GetComponent<Sticky>();
-        slip_script = GetComponent<Slip>();
+        gaurddog_script = GetComponent<GaurdDog>();
 
         waypoints = GameObject.FindGameObjectsWithTag("WayPoint");
         target_point = new Vector2(waypoints[waypoint_count].gameObject.transform.position.x, waypoints[waypoint_count].gameObject.transform.position.y);
@@ -33,7 +35,6 @@ public class MoveToWayPoint : MonoBehaviour {
         transform.position = Vector2.MoveTowards(transform.position, target_point, step);
 	}
 
-
     void OnTriggerEnter2D(Collider2D waypoint)
     {
         if (waypoint.gameObject.tag == "WayPoint")
@@ -45,8 +46,6 @@ public class MoveToWayPoint : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D trap)
     {
-        GameObject collided_object;
-
         if (trap.gameObject.name == "Spikes")
         {
             health -= spikes_script.damage;
@@ -57,9 +56,9 @@ public class MoveToWayPoint : MonoBehaviour {
             speed -= sticky_script.stick_amount;
         }
 
-        if (trap.gameObject.name == "")
+        if (trap.gameObject.name == "GaurdDog")
         {
-
+            health -= gaurddog_script.damage;
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sticky : MonoBehaviour {
 
     public float stick_amount = 2;
-    public float health = 5;
+    public int health = 5;
     public int cost = 100;
 
     public 

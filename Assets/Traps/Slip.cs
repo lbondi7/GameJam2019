@@ -5,7 +5,7 @@ using UnityEngine;
 public class Slip : MonoBehaviour {
 
     public float slip_amount = 10;
-    public float health = 5;
+    public int health = 5;
     public int cost = 100;
 
     // Use this for initialization
