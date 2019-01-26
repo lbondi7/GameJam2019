@@ -18,20 +18,6 @@ public class PlayerMovement : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        //float x = 0;
-        //if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.JoystickButton7))
-        //{
-        //    x = -1;
-        //}
-        //else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.JoystickButton8))
-        //{
-        //    x = 1;
-        //}
-        //else
-        //{
-        //    x = 0;
-        //}
-
         float speed = Input.GetAxis("Horizontal") * walkSpeed;
 
         if (speed == 0)
@@ -50,6 +36,8 @@ public class PlayerMovement : MonoBehaviour {
         {
             GetComponent<SpriteRenderer>().flipX = true;
         }
+
+        anim.SetBool(hash.attack, Input.GetKeyDown(KeyCode.Space));
 
     }
 }
