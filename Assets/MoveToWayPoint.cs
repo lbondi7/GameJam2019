@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveToWayPoint : MonoBehaviour {
 
     public float speed = 2.0f;
-    private int waypoint_count = 0;
+    private int waypoint_count = 5;
     public GameObject[] waypoints;
     public Vector2 target_point;
 
@@ -13,6 +13,7 @@ public class MoveToWayPoint : MonoBehaviour {
 	void Start ()
     {
         waypoints = GameObject.FindGameObjectsWithTag("WayPoint");
+        target_point = new Vector2(waypoints[waypoint_count].gameObject.transform.position.x, waypoints[waypoint_count].gameObject.transform.position.y);
     }
 	
 	// Update is called once per frame
@@ -23,12 +24,13 @@ public class MoveToWayPoint : MonoBehaviour {
         transform.position = Vector2.MoveTowards(transform.position, target_point, step);
 	}
 
-    void OnCollisionEnter(Collision waypoint)
+
+    void OnTriggerEnter2D(Collider2D waypoint)
     {
-        if(waypoint.gameObject.tag =="WayPoint")
+        if (waypoint.gameObject.tag == "WayPoint")
         {
-            waypoint_count++;
-            target_point = waypoints[waypoint_count].transform.position;
+            waypoint_count--;
+            target_point = new Vector2(waypoints[waypoint_count].gameObject.transform.position.x, waypoints[waypoint_count].gameObject.transform.position.y);
         }
     }
 }
