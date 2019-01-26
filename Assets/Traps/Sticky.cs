@@ -34,13 +34,14 @@ public class Sticky : MonoBehaviour {
         }
     }
 
-    void OnCollisionStay2D(Collision2D enemy)
+    void OnTriggerStay2D(Collider2D enemy)
     {
         if (enemy.gameObject.tag == "Enemy")
         {
             health--;
         }
     }
+
 
     float ApplySlip()
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveToWayPoint : MonoBehaviour {
 
     public float speed = 2.0f;
-    private int waypoint_count = 5;
+    private int waypoint_count = 1;
     public GameObject[] waypoints;
     public Vector2 target_point;
 
