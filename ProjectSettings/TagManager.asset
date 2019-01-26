@@ -3,19 +3,18 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+  tags:
+  - Waypoint2
+  - EnemyManager
+  - Waypoint1
+  - Waypoint0
+  - SpawnPoint
+  - Waypoint3
+  - Enemy
   - Spikes
   - Sticky
-  - Slip
   - GaurdDog
-  tags:
-  - EnemyManager
-  - Enemy
-  - SpawnPoint
-  - Waypoint
-  - Waypoint1
-  - Waypoint2
-  - Waypoint3
-  - Waypoint0
+  - HealthText
   layers:
   - Default
   - TransparentFX
