@@ -35,7 +35,7 @@ public class EnemyMove : MonoBehaviour {
 
         position = enemy.transform.position;
 
-        Debug.Log(next_waypoint);
+        //Debug.Log(next_waypoint);
         //Debug.Log(waypoints.Length.ToString());
         //Debug.Log(difference.Length.ToString());
         //Debug.Log(enemy.ToString());
@@ -45,7 +45,7 @@ public class EnemyMove : MonoBehaviour {
 	void Update () {
 
 
-        Debug.Log(next_waypoint);
+        //Debug.Log(next_waypoint);
         t += (Time.deltaTime / 5);
 
         if (enemy.gameObject != null)
