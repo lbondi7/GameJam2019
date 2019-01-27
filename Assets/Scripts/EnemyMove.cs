@@ -8,11 +8,12 @@ public class EnemyMove : MonoBehaviour {
     public GameObject enemy;
     int next_waypoint = 1;
 
-    [HideInInspector]
+    // [HideInInspector]
     public int route = 0;
-    [HideInInspector]
+    //[HideInInspector]
     public int health = 0;
-    public int enemy_speed = 0;
+    //[HideInInspector]
+    public float enemySpeed = 0;
 
     private GameObject[] waypoints  = new GameObject[1];
 
@@ -20,15 +21,9 @@ public class EnemyMove : MonoBehaviour {
 
     private float t = 0.0f;
 
-    void Awake()
-    {
-        //enemy_speed = 100;
-    }
-
     // Use this for initialization
     void Start()
     {
-
         if (route == 0)
             waypoints = GameObject.FindGameObjectsWithTag("Waypoint0");
         else if (route == 1)
@@ -37,19 +32,15 @@ public class EnemyMove : MonoBehaviour {
             waypoints = GameObject.FindGameObjectsWithTag("Waypoint2");
         else if (route == 3)
             waypoints = GameObject.FindGameObjectsWithTag("Waypoint3");
-
-        //Debug.Log(waypoints.Length.ToString());
-        //Debug.Log(difference.Length.ToString());
-        //Debug.Log(enemy.ToString());
     }
 	
 	// Update is called once per frame
 	void Update () {
 
-        t = enemy_speed * Time.deltaTime;
-
-        if (enemy.gameObject != null)
+        if  (this.gameObject.name != "Enemy" && this.gameObject.name != "Enemy1" &&
+                this.gameObject.name != "Enemy2" && this.gameObject.name != "Enemy3")
         {
+            t = enemySpeed * Time.deltaTime;
             int target = 0;
             for(int i = 0; i < waypoints.Length; i++)
             {
@@ -59,19 +50,17 @@ public class EnemyMove : MonoBehaviour {
                 }
             }
 
-            if (enemy.transform.position != waypoints[target].transform.position && 
-                this.gameObject.name != "Enemy" && this.gameObject.name != "Enemy1" && 
-                this.gameObject.name != "Enemy2" && this.gameObject.name != "Enemy3")
+            if (this.transform.position != waypoints[target].transform.position)
             {              
-                enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, waypoints[target].transform.position, t);
-                Debug.Log(enemy_speed);
+                this.transform.position = Vector2.MoveTowards(this.transform.position, waypoints[target].transform.position, t);
+                Debug.Log(enemySpeed);
             }
             else if (enemy.transform.position == waypoints[target].transform.position)
             {
                 next_waypoint++;
             }
 
-            if(next_waypoint > waypoints.Length)
+            if(next_waypoint > waypoints.Length || health <= 0)
             {
                 Destroy(this.gameObject);
                 enemy_manager.enemy_alive--;
@@ -83,23 +72,23 @@ public class EnemyMove : MonoBehaviour {
     {
         if (value == 0)
         {
-            health = 0;
-            enemy_speed = 20;
+            health = 1;
+            enemySpeed = 20;
         }
         else if (value == 1)
         {
             health = 2;
-            enemy_speed = 10;
+            enemySpeed = 10;
         }
         else if (value == 2)
         {
             health = 3;
-            enemy_speed = 30;
+            enemySpeed = 30;
         }
         else if (value == 3)
         {
             health = 5;
-            enemy_speed = 50;
+            enemySpeed = 50;
         }
     }
 }

@@ -61,17 +61,17 @@ public class SpawnEnemy : MonoBehaviour {
             {
                 if (enemyTimer0 > 1.0f)
                 {
-                    int rand = Random.RandomRange(0,3);
+                    int rand = Random.Range(0,3);
                     enemyTimer0 = 0.0f;
                     Instantiate(enemy0, spawnPoints[rand].transform.position, Quaternion.identity);
                     enemyMove0.route = rand;
-                    enemyMove0.setUp(1);
+                    enemyMove0.setUp(0);
                     enemy_count++;
                     enemy_alive++;
                 }
                 if (enemyTimer1 > 2.0f && wave_manager.wave >= 3)
                 {
-                    int rand = Random.RandomRange(0,3);
+                    int rand = Random.Range(0,3);
                     enemyTimer1 = 0.0f;
                     Instantiate(enemy1, spawnPoints[rand].transform.position, Quaternion.identity);
                     enemyMove1.route = rand;
@@ -81,7 +81,7 @@ public class SpawnEnemy : MonoBehaviour {
                 }
                 if (enemyTimer2 > 3.0f && wave_manager.wave >= 6)
                 {
-                    int rand = Random.RandomRange(0,3);
+                    int rand = Random.Range(0,3);
                     enemyTimer2 = 0.0f;
                     Instantiate(enemy2, spawnPoints[rand].transform.position, Quaternion.identity);
                     enemyMove2.route = rand;
@@ -91,7 +91,7 @@ public class SpawnEnemy : MonoBehaviour {
                 }
                 if (enemyTimer3 > 5.0f && wave_manager.wave >= 10)
                 {
-                    int rand = Random.RandomRange(0,3);
+                    int rand = Random.Range(0,3);
                     enemyTimer3 = 0.0f;
                     Instantiate(enemy3, spawnPoints[rand].transform.position, Quaternion.identity);
                     enemyMove3.route = rand;
