@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212215136299908130}
   - component: {fileID: 114329560047769052}
   m_Layer: 0
-  m_Name: Egg launcher
+  m_Name: Egg Launcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

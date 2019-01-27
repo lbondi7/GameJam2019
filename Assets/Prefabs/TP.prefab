@@ -20,12 +20,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4917967816634872}
   - component: {fileID: 212424859610441080}
-  - component: {fileID: 114954394299924126}
   - component: {fileID: 61955716624762410}
   - component: {fileID: 50889432188689144}
+  - component: {fileID: 114954394299924126}
   m_Layer: 0
   m_Name: TP
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1759156723123054}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.668494, y: -0.8310754, z: 18.826172}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,9 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6428bf55341113a4eae4de4b592edd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet_x_velocity: 4
+  bullet_x_velocity: 15
   bullet_y_velocity: -3
-  lifetime: 5
+  lifetime: 60
 --- !u!212 &212424859610441080
 SpriteRenderer:
   m_ObjectHideFlags: 1

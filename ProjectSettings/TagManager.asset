@@ -4,12 +4,6 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ground
-  - Egg
-  - Nerf
-  - Paint
-  - Cat
-  - TP
   - Waypoint2
   - EnemyManager
   - Waypoint1
@@ -17,8 +11,11 @@ TagManager:
   - SpawnPoint
   - Waypoint3
   - Pickup
-  tags:
   - Enemy
+  - Spikes
+  - Sticky
+  - GaurdDog
+  - Projectile
   layers:
   - Default
   - TransparentFX
