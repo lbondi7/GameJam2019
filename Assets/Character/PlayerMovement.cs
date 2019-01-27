@@ -9,10 +9,13 @@ public class PlayerMovement : MonoBehaviour {
     private Animator anim;
     private HashIDs hash;
 
+    GameObject punchPos;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
         hash = GameObject.FindGameObjectWithTag("GameController").GetComponent<HashIDs>();
+        punchPos = transform.Find("PunchPos").gameObject;
     }
 
     // Update is called once per frame
@@ -31,13 +34,41 @@ public class PlayerMovement : MonoBehaviour {
         if (speed > 0)
         {
             GetComponent<SpriteRenderer>().flipX = false;
+            punchPos.transform.localPosition = new Vector2(0.76f, punchPos.transform.localPosition.y) ;
         }
         else if(speed < 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
+            punchPos.transform.localPosition = new Vector2(-0.75f, punchPos.transform.localPosition.y);
+
         }
 
-        anim.SetBool(hash.attack, Input.GetKeyDown(KeyCode.Space));
+
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0))
+        {
+            StartCoroutine(Punch());
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Enemy"))
+        {
+            GameObject.Destroy(collision.gameObject);
+        }
+    }
+
+    IEnumerator Punch()
+    {
+        anim.SetBool(hash.attack, true);
+        yield return new WaitForSeconds(0.02f);
+        punchPos.SetActive(true);
+        //Debug.Log(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0));
+        yield return new WaitForSeconds(0);
+        anim.SetBool(hash.attack, false);
+        punchPos.SetActive(false);
+        yield return null;
 
     }
 }
