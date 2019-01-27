@@ -8,6 +8,7 @@ public class TurretCams : MonoBehaviour {
     public Camera[] turretCams;
     public int turrentIndex = 0;
     public bool enabled = false;
+    bool select = true;
 	// Use this for initialization
 	void Start ()
     {
@@ -34,13 +35,19 @@ public class TurretCams : MonoBehaviour {
                 turretCams[i].gameObject.SetActive(false);
             }
 
-            if(Input.GetKeyDown(KeyCode.A))
+            if(Input.GetKeyDown(KeyCode.A) || (Input.GetAxis("HorizontalDPD") < 0 && select))
             {
                 turrentIndex = turrentIndex > 0 ? turrentIndex - 1 : turretCams.Length - 1;
+                select = false;
             }
-            else if (Input.GetKeyDown(KeyCode.D))
+            else if (Input.GetKeyDown(KeyCode.D) || (Input.GetAxis("HorizontalDPD") > 0 && select))
             {
                 turrentIndex = turrentIndex < turretCams.Length - 1 ? turrentIndex + 1 : 0;
+                select = false;
+            }
+            else if(Input.GetAxis("HorizontalDPD") == 0)
+            {
+                select = true;
             }
         }
         else
