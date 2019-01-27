@@ -5,6 +5,11 @@ using UnityEngine;
 public class Punch : MonoBehaviour {
 
     public bool punch;
+    public GameObject coin;
+    public Transform prefab;
+    public void Update()
+    {
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -13,6 +18,7 @@ public class Punch : MonoBehaviour {
             Debug.Log("hit");
 
             GameObject.Destroy(collision.gameObject);
+            Spawncoin();
         }
     }
 
@@ -24,6 +30,17 @@ public class Punch : MonoBehaviour {
             Debug.Log("hit");
 
             GameObject.Destroy(collision.gameObject);
+            Spawncoin();
+        }
+    }
+
+
+
+    private void Spawncoin()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            Instantiate(coin, new Vector2(0, -100), Quaternion.identity);
         }
     }
 

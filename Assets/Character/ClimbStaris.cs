@@ -26,11 +26,11 @@ public class ClimbStaris : MonoBehaviour
     {
         if ((Input.GetKeyDown(KeyCode.S) || Input.GetAxis("VerticalDPD") == -1) && topTrigger.triggered)
         {
-            player.transform.position = bottomPos.position;
+            player.transform.position = new Vector2(bottomPos.position.x, bottomPos.position.y);
         }
         else if ((Input.GetKeyDown(KeyCode.W) || Input.GetAxis("VerticalDPD") == 1) && bottomTrigger.triggered)
         {
-            player.transform.position = topPos.position;
+            player.transform.position = new Vector2(topPos.position.x, topPos.position.y);
 
         }
     }

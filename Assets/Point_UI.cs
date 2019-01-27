@@ -6,23 +6,23 @@ using UnityEngine.UI;
 public class Point_UI : MonoBehaviour
 {
 
-    private int count;
+    private int Money;
 
     public Text lovePoints;
 
     private void Start()
     {
-        count = 0;
+        Money = 0;
         SetCountText();
     }
 
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Pickup"))
         {
             other.gameObject.SetActive(false);
-            count++;
+            Money++;
             SetCountText();
         }
     }
@@ -31,7 +31,7 @@ public class Point_UI : MonoBehaviour
     void SetCountText()
 
     {
-        lovePoints.text = "Count: " + count.ToString();
+        lovePoints.text = "Money: " + Money.ToString();
     }
 }
 

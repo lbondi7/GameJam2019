@@ -4,21 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Waypoint2
-  - EnemyManager
-  - Waypoint1
-  - Waypoint0
-<<<<<<< HEAD
   - Pickup
-=======
-  - SpawnPoint
-  - Waypoint3
   - Enemy
-  - Spikes
-  - Sticky
-  - GaurdDog
-  - HealthText
->>>>>>> Player3
   layers:
   - Default
   - TransparentFX
