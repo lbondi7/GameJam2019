@@ -5,6 +5,8 @@ using UnityEngine;
 public class Punch : MonoBehaviour {
 
     public bool punch;
+    public AudioSource hitsound;
+
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -13,6 +15,7 @@ public class Punch : MonoBehaviour {
             Debug.Log("hit");
 
             GameObject.Destroy(collision.gameObject);
+            hitsound.Play();
         }
     }
 
