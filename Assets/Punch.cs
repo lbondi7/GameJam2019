@@ -7,6 +7,7 @@ public class Punch : MonoBehaviour {
     public bool punch;
     public GameObject coin;
     public Transform prefab;
+    public AudioSource punchsound;
     public void Update()
     {
     }
@@ -19,6 +20,8 @@ public class Punch : MonoBehaviour {
 
             GameObject.Destroy(collision.gameObject);
             Spawncoin();
+            punchsound.Play();
+
         }
     }
 
