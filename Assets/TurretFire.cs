@@ -12,7 +12,6 @@ public class TurretFire : MonoBehaviour {
     float timer;
     int seconds;
 
-
 	// Use this for initialization
 	void Start () {
 		

@@ -44,5 +44,6 @@ public class GetHitScript : MonoBehaviour {
             timer = slowed_timer;
             slowed = true;
         }
+
     }
 }
