@@ -10,11 +10,12 @@ TagManager:
   - Waypoint0
   - SpawnPoint
   - Waypoint3
+  - Pickup
   - Enemy
   - Spikes
   - Sticky
   - GaurdDog
-  - HealthText
+  - Projectile
   layers:
   - Default
   - TransparentFX
