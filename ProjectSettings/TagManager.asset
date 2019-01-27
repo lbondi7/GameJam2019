@@ -10,18 +10,15 @@ TagManager:
   - Paint
   - Cat
   - TP
-  tags:
   - Waypoint2
   - EnemyManager
   - Waypoint1
   - Waypoint0
   - SpawnPoint
   - Waypoint3
+  - Pickup
+  tags:
   - Enemy
-  - Spikes
-  - Sticky
-  - GaurdDog
-  - HealthText
   layers:
   - Default
   - TransparentFX
