@@ -5,39 +5,22 @@ using UnityEngine;
 public class GaurdDog : MonoBehaviour {
 
 
-    public int damage = 5;
-    public int health = 15;
-    public int cost = 500;
+    public int killCount = 20;
 
-    // Use this for initialization
-    void Start ()
+    private void Update()
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
-
-    void OnCollisionEnter(Collision enemy)
-    {
-        if (enemy.gameObject.tag == "Enemy")
+        if(killCount == 0)
         {
-            health--;
-            if (health <= 0)
-            {
-                Destroy(gameObject);
-            }
+            GameObject.Destroy(this);
         }
     }
 
-    void OnTriggerStay2D(Collider2D enemy)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (enemy.gameObject.tag == "Enemy")
+        if (collision.CompareTag("Enemy") && collision != null)
         {
-            health--;
+            GameObject.Destroy(collision.gameObject);
+            --killCount;
         }
     }
 }

@@ -44,21 +44,21 @@ public class MoveToWayPoint : MonoBehaviour {
         }
     }
 
-    void OnTriggerStay2D(Collider2D trap)
-    {
-        if (trap.gameObject.name == "Spikes")
-        {
-            health -= spikes_script.damage;
-        }
+    //void OnTriggerStay2D(Collider2D trap)
+    //{
+    //    if (trap.gameObject.name == "Spikes")
+    //    {
+    //        health -= spikes_script.damage;
+    //    }
 
-        if (trap.gameObject.name == "Sticky")
-        {
-            speed -= sticky_script.stick_amount;
-        }
+    //    if (trap.gameObject.name == "Sticky")
+    //    {
+    //        speed -= sticky_script.stick_amount;
+    //    }
 
-        if (trap.gameObject.name == "GaurdDog")
-        {
-            health -= gaurddog_script.damage;
-        }
-    }
+    //    if (trap.gameObject.name == "GaurdDog")
+    //    {
+    //        health -= gaurddog_script.damage;
+    //    }
+    //}
 }

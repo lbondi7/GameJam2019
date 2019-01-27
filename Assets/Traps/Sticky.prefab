@@ -107,9 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba77d033744d17543b9b10dfbcc9bc51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stick_amount: 2
-  health: 5
-  cost: 100
+  speedReduce: 0.01
 --- !u!212 &212943971628546648
 SpriteRenderer:
   m_ObjectHideFlags: 1

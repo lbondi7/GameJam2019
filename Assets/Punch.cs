@@ -10,8 +10,6 @@ public class Punch : MonoBehaviour {
     {
         if (punch && collision.CompareTag("Enemy") && collision != null)
         {
-            Debug.Log("hit");
-
             GameObject.Destroy(collision.gameObject);
         }
     }
@@ -21,8 +19,6 @@ public class Punch : MonoBehaviour {
 
         if (punch && collision.CompareTag("Enemy") && collision != null)
         {
-            Debug.Log("hit");
-
             GameObject.Destroy(collision.gameObject);
         }
     }

@@ -12,7 +12,7 @@ public class EnemyMove : MonoBehaviour {
     public int route = 0;
 
     private GameObject[] waypoints = new GameObject[5];
-
+    public float speed = 0.2f;
     Vector2 position;
     private float t;
 
@@ -46,7 +46,7 @@ public class EnemyMove : MonoBehaviour {
 
 
         //Debug.Log(next_waypoint);
-        t += (Time.deltaTime / 5);
+        t += (Time.deltaTime * speed);
 
         if (enemy.gameObject != null)
         {

@@ -10,7 +10,7 @@ public class PlayerMovement : MonoBehaviour {
     private HashIDs hash;
     public PlayerManager player_manager;
     GameObject punchPos;
-
+    public float punchVal = 2;
 
     private void Awake()
     {
@@ -37,12 +37,20 @@ public class PlayerMovement : MonoBehaviour {
             {
                 GetComponent<SpriteRenderer>().flipX = false;
                 punchPos.transform.localPosition = new Vector2(0.76f, punchPos.transform.localPosition.y);
+
+                if (transform.Find("PunchPos").Find("Weapon(Clone)"))
+                {
+                    transform.Find("PunchPos").Find("Weapon(Clone)").GetComponent<SpriteRenderer>().flipX = false;
+                }
             }
             else if (speed < 0)
             {
                 GetComponent<SpriteRenderer>().flipX = true;
                 punchPos.transform.localPosition = new Vector2(-0.75f, punchPos.transform.localPosition.y);
-
+                if (transform.Find("PunchPos").Find("Weapon(Clone)"))
+                {
+                    transform.Find("PunchPos").Find("Weapon(Clone)").GetComponent<SpriteRenderer>().flipX = true;
+                }
             }
 
 
@@ -56,11 +64,24 @@ public class PlayerMovement : MonoBehaviour {
     IEnumerator Punch()
     {
         anim.SetBool(hash.attack, true);
+        if (transform.Find("PunchPos").Find("Weapon(Clone)"))
+        {
+            transform.Find("PunchPos").Find("Weapon(Clone)").transform.position = new Vector2(transform.Find("PunchPos").Find("Weapon(Clone)").transform.position.x
+            + (punchVal * (GetComponent<SpriteRenderer>().flipX ? -1 : 1))
+            , transform.Find("PunchPos").Find("Weapon(Clone)").transform.position.y);
+        }
+
         yield return new WaitForSeconds(0.02f);
         punchPos.GetComponent<Punch>().punch = true;
         //Debug.Log(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Joystick1Button0));
         yield return new WaitForSeconds(0);
         anim.SetBool(hash.attack, false);
+        if (transform.Find("PunchPos").Find("Weapon(Clone)"))
+        {
+            transform.Find("PunchPos").Find("Weapon(Clone)").transform.position = new Vector2(transform.Find("PunchPos").Find("Weapon(Clone)").transform.position.x
+            - (punchVal * (GetComponent<SpriteRenderer>().flipX ? -1 : 1))
+            , transform.Find("PunchPos").Find("Weapon(Clone)").transform.position.y);
+        }
         punchPos.GetComponent<Punch>().punch = false;
         yield return null;
 

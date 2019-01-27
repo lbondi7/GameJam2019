@@ -90,26 +90,35 @@ public class spawnObjects : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.GUITAR)
         {
-            GameObject weapon = (GameObject)Instantiate(guitar, punchPos.position, Quaternion.identity) as GameObject;
-            weapon.transform.parent = punchPos;
+            createWeapon(guitar);
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.BAT)
         {
-            GameObject weapon = (GameObject)Instantiate(bat, punchPos.position, Quaternion.identity) as GameObject;
-            weapon.transform.parent = punchPos;
+            createWeapon(bat);
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.SPATULA)
         {
-            GameObject weapon = (GameObject)Instantiate(spatular, punchPos.position, Quaternion.identity) as GameObject;
-            weapon.transform.parent = punchPos;
+            createWeapon(spatular);
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.HAMMER)
         {
-            GameObject weapon = (GameObject)Instantiate(hammer, punchPos.position, Quaternion.identity) as GameObject;
+            createWeapon(hammer);
+        }
+    }
+
+    private void createWeapon(GameObject weapon_)
+    {
+        if (!punchPos.Find("Weapon(Clone)"))
+        {
+            GameObject weapon = (GameObject)Instantiate(weapon_, punchPos.position, Quaternion.identity) as GameObject;
             weapon.transform.parent = punchPos;
+        }
+        else
+        {
+            punchPos.Find("Weapon(Clone)").GetComponent<SpriteRenderer>().sprite = weapon_.GetComponent<SpriteRenderer>().sprite;
         }
     }
 
@@ -126,9 +135,17 @@ public class spawnObjects : MonoBehaviour {
                 if ((turretCams.turrentIndex < 3 && !flip) || (turretCams.turrentIndex  > 2 && flip))
                 {
                     newTurret.GetComponent<SpriteRenderer>().flipX = true;
-                    turretPos[turretCams.turrentIndex].GetComponent<turretSpot>().turret = true;
                 }
+
             }
+            //else
+            //{
+ 
+            //    turretPos[turretCams.turrentIndex].transform.Find("Turret(Clone)").GetComponent<SpriteRenderer>().sprite = turret.GetComponent<SpriteRenderer>().sprite;
+                
+            //}
+            turretPos[turretCams.turrentIndex].GetComponent<turretSpot>().turret = true;
+
         }
         player_manager.turret_mode = true;
     }

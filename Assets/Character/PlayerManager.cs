@@ -6,7 +6,8 @@ public class PlayerManager : MonoBehaviour
 {
 
     // Use this for initialization
-    public int health = 3;
+    public HeartHealth heartHealth;
+    public int health;
     public int money = 10;
     public bool build_mode = false;
     public bool turret_mode = false;
@@ -33,6 +34,6 @@ public class PlayerManager : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-
+        health = heartHealth.health;
 	}
 }

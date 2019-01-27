@@ -2,49 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sticky : MonoBehaviour {
+public class Sticky : MonoBehaviour
+{
+    public float speedReduce = 0.15f;
 
-    public float stick_amount = 2;
-    public int health = 5;
-    public int cost = 100;
-
-    public 
-
-	// Use this for initialization
-	void Start ()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
 
-    void OnCollisionEnter(Collision enemy)
-    {
-        if (enemy.gameObject.tag == "Enemy")
+        if (collision.CompareTag("Enemy") && collision != null)
         {
-            health--;
-            if (health <= 0)
-            {
-                Destroy(gameObject);
-            }
+            collision.GetComponent<EnemyMove>().speed = speedReduce;
         }
     }
 
-    void OnTriggerStay2D(Collider2D enemy)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (enemy.gameObject.tag == "Enemy")
+
+        if (collision.CompareTag("Enemy") && collision != null)
         {
-            health--;
+            collision.GetComponent<EnemyMove>().speed = 0.2f;
         }
     }
 
-
-    float ApplySlip()
-    {
-        return stick_amount;
-    }
 }

@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4137217987951846}
   - component: {fileID: 61679748923938514}
+  - component: {fileID: 114538863956892926}
   m_Layer: 0
   m_Name: GaurdDog
   m_TagString: GaurdDog
@@ -79,7 +80,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -95,6 +96,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114538863956892926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1379585629357034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21de620439dec254f96d683edb1292f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killCount: 20
 --- !u!212 &212999727764967168
 SpriteRenderer:
   m_ObjectHideFlags: 1
