@@ -5,6 +5,10 @@ using UnityEngine;
 public class SpawnEnemy : MonoBehaviour {
 
     private int enemy_count = 0;
+
+    [HideInInspector]
+    public int enemy_alive = 0;
+
     public GameObject enemy0;
     public GameObject enemy1;
     public GameObject enemy2;
@@ -21,6 +25,8 @@ public class SpawnEnemy : MonoBehaviour {
     public EnemyMove enemyMove2;
     public EnemyMove enemyMove3;
 
+    public WaveManager wave_manager;
+
     void Awake()
     {
         if(spawnPoints == null)
@@ -29,46 +35,76 @@ public class SpawnEnemy : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        enemyTimer0 += Time.deltaTime;
-        enemyTimer1 += Time.deltaTime;
-        enemyTimer2 += Time.deltaTime;
-        enemyTimer3 += Time.deltaTime;
-
-        if (enemy_count < 1000000)
+        if (!wave_manager.in_wave)
         {
-            if (enemyTimer0 > 1.0f)
+            enemyTimer0 = 0.0f;
+            enemyTimer1 = 0.0f;
+            enemyTimer2 = 0.0f;
+            enemyTimer3 = 0.0f;
+            enemy_alive = 0;
+            enemy_count = 0;
+        }
+        else if(wave_manager.in_wave)
+        {
+            enemyTimer0 += Time.deltaTime;
+            enemyTimer1 += Time.deltaTime;
+            enemyTimer2 += Time.deltaTime;
+            enemyTimer3 += Time.deltaTime;
+
+            if (enemy_count < wave_manager.enemy_amount)
             {
-                enemyTimer0 = 0.0f;
-                Instantiate(enemy0, spawnPoints[0].transform.position, Quaternion.identity);
-                enemyMove0.route = 0;
-                enemy_count++;
+                if (enemyTimer0 > 1.0f)
+                {
+                    int rand = Random.RandomRange(0,3);
+                    enemyTimer0 = 0.0f;
+                    Instantiate(enemy0, spawnPoints[rand].transform.position, Quaternion.identity);
+                    enemyMove0.route = rand;
+                    enemyMove0.setUp(1);
+                    enemy_count++;
+                    enemy_alive++;
+                }
+                if (enemyTimer1 > 2.0f && wave_manager.wave >= 3)
+                {
+                    int rand = Random.RandomRange(0,3);
+                    enemyTimer1 = 0.0f;
+                    Instantiate(enemy1, spawnPoints[rand].transform.position, Quaternion.identity);
+                    enemyMove1.route = rand;
+                    enemyMove1.setUp(1);
+                    enemy_count++;
+                    enemy_alive++;
+                }
+                if (enemyTimer2 > 3.0f && wave_manager.wave >= 6)
+                {
+                    int rand = Random.RandomRange(0,3);
+                    enemyTimer2 = 0.0f;
+                    Instantiate(enemy2, spawnPoints[rand].transform.position, Quaternion.identity);
+                    enemyMove2.route = rand;
+                    enemyMove2.setUp(2);
+                    enemy_count++;
+                    enemy_alive++;
+                }
+                if (enemyTimer3 > 5.0f && wave_manager.wave >= 10)
+                {
+                    int rand = Random.RandomRange(0,3);
+                    enemyTimer3 = 0.0f;
+                    Instantiate(enemy3, spawnPoints[rand].transform.position, Quaternion.identity);
+                    enemyMove3.route = rand;
+                    enemyMove3.setUp(3);
+                    enemy_count++;
+                    enemy_alive++;
+                }
             }
-            if (enemyTimer1 > 2.0f)
+            else if (enemy_alive <= 0)
             {
-                enemyTimer1 = 0.0f;
-                Instantiate(enemy1, spawnPoints[1].transform.position, Quaternion.identity);
-                enemyMove1.route = 1;
-                enemy_count++;
-            }
-            if (enemyTimer2 > 3.0f)
-            {
-                enemyTimer2 = 0.0f;
-                Instantiate(enemy2, spawnPoints[2].transform.position, Quaternion.identity);
-                enemyMove2.route = 2;
-                enemy_count++;
-            }
-            if (enemyTimer3 > 5.0f)
-            {
-                enemyTimer3 = 0.0f;
-                Instantiate(enemy3, spawnPoints[3].transform.position, Quaternion.identity);
-                enemyMove3.route = 3;
-                enemy_count++;
+                wave_manager.in_wave = false;
+                wave_manager.timer = 5.0f;
+                wave_manager.wave++;
             }
         }
     }

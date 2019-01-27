@@ -4,20 +4,25 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour {
 
-    
+
     public GameObject enemy;
     int next_waypoint = 1;
 
     [HideInInspector]
     public int route = 0;
+    [HideInInspector]
+    public int health = 0;
+    public int enemy_speed = 0;
 
-    private GameObject[] waypoints = new GameObject[5];
+    private GameObject[] waypoints  = new GameObject[1];
 
-    Vector2 position;
-    private float t;
+    public SpawnEnemy enemy_manager;
+
+    private float t = 0.0f;
 
     void Awake()
     {
+        //enemy_speed = 100;
     }
 
     // Use this for initialization
@@ -33,9 +38,6 @@ public class EnemyMove : MonoBehaviour {
         else if (route == 3)
             waypoints = GameObject.FindGameObjectsWithTag("Waypoint3");
 
-        position = enemy.transform.position;
-
-        Debug.Log(next_waypoint);
         //Debug.Log(waypoints.Length.ToString());
         //Debug.Log(difference.Length.ToString());
         //Debug.Log(enemy.ToString());
@@ -44,9 +46,7 @@ public class EnemyMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
-        Debug.Log(next_waypoint);
-        t += (Time.deltaTime / 5);
+        t = enemy_speed * Time.deltaTime;
 
         if (enemy.gameObject != null)
         {
@@ -62,21 +62,44 @@ public class EnemyMove : MonoBehaviour {
             if (enemy.transform.position != waypoints[target].transform.position && 
                 this.gameObject.name != "Enemy" && this.gameObject.name != "Enemy1" && 
                 this.gameObject.name != "Enemy2" && this.gameObject.name != "Enemy3")
-            {
-                Vector2 new_pos = Vector2.Lerp(position, waypoints[target].transform.position, t);
-                enemy.transform.position = new_pos;
+            {              
+                enemy.transform.position = Vector2.MoveTowards(enemy.transform.position, waypoints[target].transform.position, t);
+                Debug.Log(enemy_speed);
             }
             else if (enemy.transform.position == waypoints[target].transform.position)
             {
                 next_waypoint++;
-                position = enemy.transform.position;
-                t = 0;
             }
 
             if(next_waypoint > waypoints.Length)
             {
                 Destroy(this.gameObject);
+                enemy_manager.enemy_alive--;
             }
+        }
+    }
+
+    public void setUp(int value)
+    {
+        if (value == 0)
+        {
+            health = 0;
+            enemy_speed = 20;
+        }
+        else if (value == 1)
+        {
+            health = 2;
+            enemy_speed = 10;
+        }
+        else if (value == 2)
+        {
+            health = 3;
+            enemy_speed = 30;
+        }
+        else if (value == 3)
+        {
+            health = 5;
+            enemy_speed = 50;
         }
     }
 }
