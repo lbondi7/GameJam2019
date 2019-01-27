@@ -7,7 +7,7 @@ public class TurretCams : MonoBehaviour {
     public Camera playerCam;
     public Camera[] turretCams;
     public int turrentIndex = 0;
-    public bool enabled = false;
+    public PlayerManager playerManager;
     bool select = true;
 	// Use this for initialization
 	void Start ()
@@ -17,12 +17,8 @@ public class TurretCams : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.E))
-        {
-            enabled = !enabled;       
-        }
 
-        if(enabled)
+        if(playerManager.build_mode && playerManager.turret_mode)
         {
             playerCam.gameObject.SetActive(false);
             turretCams[turrentIndex].gameObject.SetActive(true);
@@ -52,6 +48,7 @@ public class TurretCams : MonoBehaviour {
         }
         else
         {
+            Debug.Log("hit");
             for (int i = 0; i < turretCams.Length; ++i)
             {
                 turretCams[i].gameObject.SetActive(false);
