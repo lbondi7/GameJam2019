@@ -16,46 +16,36 @@ public class PlayerInput : MonoBehaviour {
 	void Update ()
     {
         if (Input.GetKeyDown(KeyCode.Joystick1Button1))
+        {
+            if(player_manager.turret_mode)
             {
-                if(player_manager.build_mode == true)
-                {
-                    player_manager.build_mode = false;
-                }
-                else
-                {
-                    player_manager.build_mode = true;
-                }
+                player_manager.turret_mode = false;
             }
+            else
+            {
+                player_manager.build_mode = !player_manager.build_mode;
+            }
+        }
 
 
-        if(player_manager.build_mode)
+        if(player_manager.build_mode && !player_manager.turret_mode)
         {
 
-            if(Input.GetAxisRaw("HorizontalDPD") == 1)
-            {
-                if (player_manager.build_mode)
-                {
-                
-                    if(next_menu_item)
-                    {
-                        next_menu_item = false;
-                        player_manager.menu_selection++;
-                    }
-                    next_menu_item = true;
-                }
+            if(next_menu_item && Input.GetAxisRaw("HorizontalDPD") > 0)
+            {              
+                next_menu_item = false;
+                player_manager.menu_selection = player_manager.menu_selection < PlayerManager.ClickState.HAMMER ? player_manager.menu_selection + 1 : 0;
             }
-            else if(Input.GetAxisRaw("HorizontalDPD") == -1)
+            else if(next_menu_item && Input.GetAxisRaw("HorizontalDPD") < 0)
             {
-                if (player_manager.build_mode)
-                {
-                
-                    if (next_menu_item)
-                    {
-                        next_menu_item = false;
-                        player_manager.menu_selection--;
-                    }
-                    next_menu_item = true;
-                }
+
+                    next_menu_item = false;
+                player_manager.menu_selection = player_manager.menu_selection > 0 ? player_manager.menu_selection - 1:PlayerManager.ClickState.HAMMER;                
+            }
+            else if(Input.GetAxisRaw("HorizontalDPD") == 0)
+            {
+                next_menu_item = true;
+
             }
 
             if ((int)player_manager.menu_selection < -1)

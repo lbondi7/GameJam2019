@@ -9,10 +9,10 @@ public class PlayerManager : MonoBehaviour
     public int health = 3;
     public int money = 10;
     public bool build_mode = false;
-    public ClickState menu_selection = ClickState.NONE;
+    public bool turret_mode = false;
+    public ClickState menu_selection = ClickState.SPIKES;
     public enum ClickState
     {
-        NONE = -1,
         SPIKES = 0,
         GLUE = 1,
         DOG = 2,
