@@ -13,7 +13,7 @@ public class SpawnEnemy : MonoBehaviour {
     public GameObject enemy1;
     public GameObject enemy2;
     public GameObject enemy3;
-    private GameObject[] spawnPoints;
+    public GameObject[] spawnPoints;
 
     float enemyTimer0 = 0.0f;
     float enemyTimer1 = 0.0f;
@@ -29,8 +29,7 @@ public class SpawnEnemy : MonoBehaviour {
 
     void Awake()
     {
-        if(spawnPoints == null)
-            spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
+       //spawnPoints = GameObject.FindGameObjectsWithTag("SpawnPoint");
     }
 
     // Use this for initialization
@@ -61,43 +60,47 @@ public class SpawnEnemy : MonoBehaviour {
             {
                 if (enemyTimer0 > 1.0f)
                 {
-                    int rand = Random.Range(0,3);
-                    enemyTimer0 = 0.0f;
+                    int rand = 0;
+                    rand = Random.Range(0,3);
                     Instantiate(enemy0, spawnPoints[rand].transform.position, Quaternion.identity);
                     enemyMove0.route = rand;
                     enemyMove0.setUp(0);
                     enemy_count++;
                     enemy_alive++;
+                    enemyTimer0 = 0.0f;
                 }
                 if (enemyTimer1 > 2.0f && wave_manager.wave >= 3)
                 {
-                    int rand = Random.Range(0,3);
-                    enemyTimer1 = 0.0f;
+                    int rand = 0;
+                    rand = Random.Range(0, 3);
                     Instantiate(enemy1, spawnPoints[rand].transform.position, Quaternion.identity);
                     enemyMove1.route = rand;
                     enemyMove1.setUp(1);
                     enemy_count++;
                     enemy_alive++;
+                    enemyTimer1 = 0.0f;
                 }
                 if (enemyTimer2 > 3.0f && wave_manager.wave >= 6)
                 {
-                    int rand = Random.Range(0,3);
-                    enemyTimer2 = 0.0f;
+                    int rand = 0;
+                    rand = Random.Range(0, 3);
                     Instantiate(enemy2, spawnPoints[rand].transform.position, Quaternion.identity);
                     enemyMove2.route = rand;
                     enemyMove2.setUp(2);
                     enemy_count++;
                     enemy_alive++;
+                    enemyTimer2 = 0.0f;
                 }
                 if (enemyTimer3 > 5.0f && wave_manager.wave >= 10)
                 {
-                    int rand = Random.Range(0,3);
-                    enemyTimer3 = 0.0f;
+                    int rand = 0;
+                    rand = Random.Range(0, 3);
                     Instantiate(enemy3, spawnPoints[rand].transform.position, Quaternion.identity);
                     enemyMove3.route = rand;
                     enemyMove3.setUp(3);
                     enemy_count++;
                     enemy_alive++;
+                    enemyTimer3 = 0.0f;
                 }
             }
             else if (enemy_alive <= 0)

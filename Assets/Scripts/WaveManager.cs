@@ -41,7 +41,7 @@ public class WaveManager : MonoBehaviour {
         {
             if(wave == 1)
             {
-                enemy_amount = 10;
+                enemy_amount = 11;
             }
             else if (wave == 2)
             {
