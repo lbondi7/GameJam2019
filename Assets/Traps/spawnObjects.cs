@@ -22,6 +22,8 @@ public class spawnObjects : MonoBehaviour {
     public GameObject hammer;
     public Transform punchPos;
 
+    public Point_UI test;
+
     // Use this for initialization
     public enum ClickState
     {
@@ -55,61 +57,101 @@ public class spawnObjects : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.SPIKES)
         {
-            GameObject newObj = (GameObject)Instantiate(spike_object, player.transform.position, Quaternion.identity) as GameObject;
-            newObj.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 5, 0);
+            if (test.Money >= 10)
+            {
+                GameObject newObj = (GameObject)Instantiate(spike_object, player.transform.position, Quaternion.identity) as GameObject;
+                newObj.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 5, 0);
+                test.Money -= 10;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.STICKY)
         {
-            GameObject newObj = (GameObject)Instantiate(sticky_object, player.transform.position, Quaternion.identity) as GameObject;
-            newObj.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 5, 0);
+            if (test.Money >= 50)
+            {
+                GameObject newObj = (GameObject)Instantiate(sticky_object, player.transform.position, Quaternion.identity) as GameObject;
+                newObj.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 5, 0);
+                test.Money -= 50;
+            }
+        
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.GAURDDOG)
         {
-            GameObject newObj = (GameObject)Instantiate(gaurddog_object, player.transform.position, Quaternion.identity) as GameObject;
-            newObj.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0);
-            //GameObject newObj = (GameObject)Instantiate(gaurddog_object, camera.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity) as GameObject;
-            //newObj.transform.position = new Vector3(camera.ScreenToWorldPoint(Input.mousePosition).x, camera.ScreenToWorldPoint(Input.mousePosition).y, 0);
+            if (test.Money >= 100)
+            {
+                GameObject newObj = (GameObject)Instantiate(gaurddog_object, player.transform.position, Quaternion.identity) as GameObject;
+                newObj.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0);
+                //GameObject newObj = (GameObject)Instantiate(gaurddog_object, camera.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity) as GameObject;
+                //newObj.transform.position = new Vector3(camera.ScreenToWorldPoint(Input.mousePosition).x, camera.ScreenToWorldPoint(Input.mousePosition).y, 0);
+                test.Money -= 100;
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.TOILETPAPER)
         {
-            createTurret(toiletRoll, false);
+            if (test.Money >= 100)
+            {
+                createTurret(toiletRoll, false);
+                test.Money -= 100;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.PAINT)
-        {
+            if (test.Money >= 200)
+            {
             createTurret(paint, true);
-        }
+                test.Money -= 200;
+            }
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.EGGLAUNCHER)
         {
-            createTurret(eggLauncher, false);
+            if (test.Money >= 300)
+            {
+                createTurret(eggLauncher, false);
+                test.Money -= 300;
+            }
+            
         }
 
         if(Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.GUITAR)
         {
-            GameObject weapon = (GameObject)Instantiate(guitar, punchPos.position, Quaternion.identity) as GameObject;
-            weapon.transform.parent = punchPos;
+            if (test.Money >= 30)
+            {
+                GameObject weapon = (GameObject)Instantiate(guitar, punchPos.position, Quaternion.identity) as GameObject;
+                weapon.transform.parent = punchPos;
+                test.Money -= 30;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.BAT)
         {
-            GameObject weapon = (GameObject)Instantiate(bat, punchPos.position, Quaternion.identity) as GameObject;
-            weapon.transform.parent = punchPos;
+            if (test.Money >= 40)
+            {
+                GameObject weapon = (GameObject)Instantiate(bat, punchPos.position, Quaternion.identity) as GameObject;
+                weapon.transform.parent = punchPos;
+                test.Money -= 40;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.SPATULA)
         {
-            GameObject weapon = (GameObject)Instantiate(spatular, punchPos.position, Quaternion.identity) as GameObject;
-            weapon.transform.parent = punchPos;
+            if (test.Money >= 60)
+            {
+                GameObject weapon = (GameObject)Instantiate(spatular, punchPos.position, Quaternion.identity) as GameObject;
+                weapon.transform.parent = punchPos;
+                test.Money -= 60;
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.HAMMER)
         {
-            GameObject weapon = (GameObject)Instantiate(hammer, punchPos.position, Quaternion.identity) as GameObject;
-            weapon.transform.parent = punchPos;
+            if (test.Money >= 200)
+            {
+                GameObject weapon = (GameObject)Instantiate(hammer, punchPos.position, Quaternion.identity) as GameObject;
+                weapon.transform.parent = punchPos;
+                test.Money -= 200;
+            }
         }
     }
 
@@ -133,9 +175,14 @@ public class spawnObjects : MonoBehaviour {
         player_manager.turret_mode = true;
     }
 
+
     public void setSpikeActive()
     {
-        currently_selected_trap = ClickState.SPIKES;
+               currently_selected_trap = ClickState.SPIKES;
+        
+        
+
+         
     }
 
     public void setStickyActive()

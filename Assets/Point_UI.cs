@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Point_UI : MonoBehaviour
 {
 
-    private int Money;
+    public int Money;
 
     public Text lovePoints;
 

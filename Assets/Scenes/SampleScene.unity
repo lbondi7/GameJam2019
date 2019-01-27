@@ -1397,7 +1397,7 @@ MonoBehaviour:
   - {fileID: 1183146054}
   - {fileID: 1494808954}
   turrentIndex: 0
-  enabled: 0
+  playerManager: {fileID: 1863234742}
 --- !u!1001 &466756876
 Prefab:
   m_ObjectHideFlags: 0
@@ -3744,6 +3744,63 @@ Prefab:
       propertyPath: player_manager
       value: 
       objectReference: {fileID: 1863234742}
+    - target: {fileID: 114696028496537930, guid: 2ee21e8b55ac9c04e9ed1c4072c56a41,
+        type: 2}
+      propertyPath: punchPos
+      value: 
+      objectReference: {fileID: 1803299552}
+    - target: {fileID: 114696028496537930, guid: 2ee21e8b55ac9c04e9ed1c4072c56a41,
+        type: 2}
+      propertyPath: eggLauncher
+      value: 
+      objectReference: {fileID: 1491082014493896, guid: fe74b1e30f3b7e64682a7836a24041ee,
+        type: 2}
+    - target: {fileID: 114696028496537930, guid: 2ee21e8b55ac9c04e9ed1c4072c56a41,
+        type: 2}
+      propertyPath: paint
+      value: 
+      objectReference: {fileID: 1126560496617898, guid: b2741f6106cc2c543ba33a9651a9bcd6,
+        type: 2}
+    - target: {fileID: 114696028496537930, guid: 2ee21e8b55ac9c04e9ed1c4072c56a41,
+        type: 2}
+      propertyPath: toiletRoll
+      value: 
+      objectReference: {fileID: 1228639944974414, guid: 8dc2e02822f45584d831fa648ea8699a,
+        type: 2}
+    - target: {fileID: 114696028496537930, guid: 2ee21e8b55ac9c04e9ed1c4072c56a41,
+        type: 2}
+      propertyPath: guitar
+      value: 
+      objectReference: {fileID: 1193776435508964, guid: 6ffa696f68d75ad49933d7d675b73e70,
+        type: 2}
+    - target: {fileID: 114696028496537930, guid: 2ee21e8b55ac9c04e9ed1c4072c56a41,
+        type: 2}
+      propertyPath: bat
+      value: 
+      objectReference: {fileID: 1693770499266822, guid: 66e8da8da045a5940a03395a8875140b,
+        type: 2}
+    - target: {fileID: 114696028496537930, guid: 2ee21e8b55ac9c04e9ed1c4072c56a41,
+        type: 2}
+      propertyPath: spatular
+      value: 
+      objectReference: {fileID: 1867006634714218, guid: a366feb9ba17d35409a86b1de08596d9,
+        type: 2}
+    - target: {fileID: 114696028496537930, guid: 2ee21e8b55ac9c04e9ed1c4072c56a41,
+        type: 2}
+      propertyPath: hammer
+      value: 
+      objectReference: {fileID: 1063744260341202, guid: 8a4a03c4cfa74014faf9964b41b62bee,
+        type: 2}
+    - target: {fileID: 114696028496537930, guid: 2ee21e8b55ac9c04e9ed1c4072c56a41,
+        type: 2}
+      propertyPath: turretCams
+      value: 
+      objectReference: {fileID: 454885509}
+    - target: {fileID: 114696028496537930, guid: 2ee21e8b55ac9c04e9ed1c4072c56a41,
+        type: 2}
+      propertyPath: test
+      value: 
+      objectReference: {fileID: 1261484797}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ee21e8b55ac9c04e9ed1c4072c56a41, type: 2}
   m_IsPrefabAsset: 0
@@ -4285,6 +4342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2afb7ac99b6b5c8438e1b83e88a7b5f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Money: 1
   lovePoints: {fileID: 1766253372}
 --- !u!1 &1292626437
 GameObject:
@@ -6925,6 +6983,7 @@ MonoBehaviour:
   health: 3
   money: 10
   build_mode: 0
+  turret_mode: 0
   menu_selection: -1
 --- !u!4 &1863234743 stripped
 Transform:
