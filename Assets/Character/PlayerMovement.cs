@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour {
     private HashIDs hash;
 
     GameObject punchPos;
+    public int floor = 0;
 
     private void Awake()
     {
@@ -27,16 +28,16 @@ public class PlayerMovement : MonoBehaviour {
         {
             speed = Input.GetAxis("HorizontalDPD") * walkSpeed;
         }
-        anim.SetFloat(hash.speed, Input.GetAxis("Horizontal") != 0 || Input.GetAxis("HorizontalDPD")  != 0? 1 : 0);
+        anim.SetFloat(hash.speed, Input.GetAxis("Horizontal") != 0 || Input.GetAxis("HorizontalDPD") != 0 ? 1 : 0);
 
         transform.Translate(new Vector2(speed, 0));
 
         if (speed > 0)
         {
             GetComponent<SpriteRenderer>().flipX = false;
-            punchPos.transform.localPosition = new Vector2(0.76f, punchPos.transform.localPosition.y) ;
+            punchPos.transform.localPosition = new Vector2(0.76f, punchPos.transform.localPosition.y);
         }
-        else if(speed < 0)
+        else if (speed < 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
             punchPos.transform.localPosition = new Vector2(-0.75f, punchPos.transform.localPosition.y);
@@ -53,7 +54,7 @@ public class PlayerMovement : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Enemy"))
+        if(collision.CompareTag("Enemy") && collision != null)
         {
             GameObject.Destroy(collision.gameObject);
         }
