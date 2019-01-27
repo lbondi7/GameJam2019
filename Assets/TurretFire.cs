@@ -14,11 +14,13 @@ public class TurretFire : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+        projectile.GetComponent<BulletScript>().bullet_x_velocity *= GetComponent<SpriteRenderer>().flipX ? -1 : 1;
+
+
+    }
+
+    // Update is called once per frame
+    void Update () {
 
         timer += Time.deltaTime;
         seconds = (int)timer;

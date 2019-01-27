@@ -10,6 +10,11 @@ public class HeartHealth : MonoBehaviour {
     private void Update()
     {
         end_game = health == 0;
+
+        if(end_game)
+        {
+            Application.Quit();
+        }
     }
     // Use this for initialization
     private void OnTriggerEnter2D(Collider2D collision)

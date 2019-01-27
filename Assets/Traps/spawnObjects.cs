@@ -52,7 +52,7 @@ public class spawnObjects : MonoBehaviour {
         if (!player_manager.turret_mode)
         {
             camera.ScreenToWorldPoint(Input.mousePosition);
-            transform.position = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+            //transform.position = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.SPIKES)
@@ -116,40 +116,38 @@ public class spawnObjects : MonoBehaviour {
 
         if(Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.GUITAR)
         {
-            createWeapon(guitar);
             if (test.Money >= 30)
             {
-                GameObject weapon = (GameObject)Instantiate(guitar, punchPos.position, Quaternion.identity) as GameObject;
-                weapon.transform.parent = punchPos;
+                createWeapon(guitar);
                 test.Money -= 30;
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.BAT)
         {
-            createWeapon(bat);
             if (test.Money >= 40)
             {
-                GameObject weapon = (GameObject)Instantiate(bat, punchPos.position, Quaternion.identity) as GameObject;
-                weapon.transform.parent = punchPos;
+                createWeapon(bat);
                 test.Money -= 40;
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.SPATULA)
         {
-            createWeapon(spatular);
             if (test.Money >= 60)
             {
-                GameObject weapon = (GameObject)Instantiate(spatular, punchPos.position, Quaternion.identity) as GameObject;
-                weapon.transform.parent = punchPos;
+                createWeapon(spatular);
                 test.Money -= 60;
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.HAMMER)
         {
-            createWeapon(hammer);
+            if (test.Money >= 200)
+            {
+                createWeapon(hammer);
+                test.Money -= 200;
+            }
         }
     }
 
@@ -159,12 +157,7 @@ public class spawnObjects : MonoBehaviour {
         {
             GameObject weapon = (GameObject)Instantiate(weapon_, punchPos.position, Quaternion.identity) as GameObject;
             weapon.transform.parent = punchPos;
-            if (test.Money >= 200)
-            {
-                GameObject weapon = (GameObject)Instantiate(hammer, punchPos.position, Quaternion.identity) as GameObject;
-                weapon.transform.parent = punchPos;
-                test.Money -= 200;
-            }
+            
         }
         else
         {

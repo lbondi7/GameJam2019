@@ -12,7 +12,7 @@ public class Point_UI : MonoBehaviour
 
     private void Start()
     {
-        Money = 0;
+        Money = 500;
         SetCountText();
     }
 
