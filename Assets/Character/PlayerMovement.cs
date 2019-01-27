@@ -58,6 +58,11 @@ public class PlayerMovement : MonoBehaviour {
             {
                 StartCoroutine(Punch());
             }
+
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
         }
     }
 
