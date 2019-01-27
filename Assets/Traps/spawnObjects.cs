@@ -10,8 +10,7 @@ public class spawnObjects : MonoBehaviour {
     public GameObject gaurddog_object;
     public Camera camera;
     public GameObject player;
-
-
+    public PlayerManager player_manager;
 
     // Use this for initialization
     public enum ClickState
@@ -40,23 +39,26 @@ public class spawnObjects : MonoBehaviour {
 
         transform.position = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
-        if (Input.GetMouseButtonDown(0) && currently_selected_trap == ClickState.SPIKES)
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.SPIKES)
         {
-            //GameObject newObj = (GameObject)Instantiate(spike_object, camera.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity) as GameObject;
-            //newObj.transform.position = new Vector3(camera.ScreenToWorldPoint(Input.mousePosition).x, camera.ScreenToWorldPoint(Input.mousePosition).y, 0);
+            GameObject newObj = (GameObject)Instantiate(spike_object, player.transform.position, Quaternion.identity) as GameObject;
+            newObj.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 5, 0);
         }
 
-        if (Input.GetMouseButtonDown(0) && currently_selected_trap == ClickState.STICKY)
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.STICKY)
         {
-            //GameObject newObj = (GameObject)Instantiate(sticky_object, camera.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity) as GameObject;
-            //newObj.transform.position = new Vector3(camera.ScreenToWorldPoint(Input.mousePosition).x, camera.ScreenToWorldPoint(Input.mousePosition).y, 0);
+            GameObject newObj = (GameObject)Instantiate(sticky_object, player.transform.position, Quaternion.identity) as GameObject;
+            newObj.transform.position = new Vector3(player.transform.position.x, player.transform.position.y - 5, 0);
         }
 
-        if (Input.GetMouseButtonDown(0) && currently_selected_trap == ClickState.GAURDDOG)
+        if (Input.GetKeyDown(KeyCode.Joystick1Button0) && (int)player_manager.menu_selection == (int)ClickState.GAURDDOG)
         {
+            GameObject newObj = (GameObject)Instantiate(gaurddog_object, player.transform.position, Quaternion.identity) as GameObject;
+            newObj.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, 0);
             //GameObject newObj = (GameObject)Instantiate(gaurddog_object, camera.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity) as GameObject;
             //newObj.transform.position = new Vector3(camera.ScreenToWorldPoint(Input.mousePosition).x, camera.ScreenToWorldPoint(Input.mousePosition).y, 0);
         }
+
     }
 
     public void setSpikeActive()
